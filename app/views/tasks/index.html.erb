@@ -1,0 +1,23 @@
+<h1>Tasks</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+  </tr>
+  <tbody>
+    <% @tasks.each do |task| %>
+      <tr>
+        <td><%= task.title %></td>
+        <% if task.completed %>
+        <td><input type="checkbox" checked ></td>
+        <% else %>
+        <td><input type="checkbox"></td>
+        <% end %>
+        <td><%= link_to 'Show', task_path(task) %></td>
+        <td>  <%= link_to 'Delete', task_path(task), method: :delete, data: { confirm: "Are you sure?" } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+  <%= link_to 'create new', new_tasks_path %>
